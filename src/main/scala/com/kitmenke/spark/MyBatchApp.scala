@@ -36,7 +36,7 @@ object MyBatchApp {
         .map(word => (word, 1))
         .reduceByKey(_ + _)
         .sortBy(t => t._2, ascending = false)
-      counts.collect().foreach(println)
+      counts.collect().foreach(c => logger.warn(c))
     } catch {
       case e: Exception => logger.error(s"$jobName error in main", e)
     }
